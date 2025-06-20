@@ -1,0 +1,127 @@
+// src/styles/main.scss
+// Fichier Sass principal
+@import 'variables';
+@import 'glassmorphism'; // Importez le mixin glassmorphism
+
+// Styles globaux
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif; // Utilisation de la police Inter
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Arrière-plan dégradé pour mieux voir le glassmorphism */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: $text-color;
+}
+
+#root {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+// Style du composant GlassCard
+.glass-card {
+  @include glassmorphism; // Applique l'effet glassmorphism
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+// Styles de la navigation
+.navbar-container {
+  padding: 1rem 2rem;
+  margin-bottom: 20px;
+  max-width: 1000px; /* Ajuster la largeur de la navbar */
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .navbar-link {
+    color: $link-color;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: $glass-border-color;
+      color: $link-hover-color;
+    }
+  }
+}
+
+// Styles des conteneurs de page
+.page-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  box-sizing: border-box; /* Pour inclure le padding dans la largeur */
+}
+
+.page-container .glass-card {
+  max-width: 700px; /* Ajuster la largeur des cartes de page */
+}
+
+// Styles de base pour le contenu
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: $text-color;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: lighten($text-color, 10%);
+}
+
+/* Media Queries pour la réactivité */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 1.5rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
